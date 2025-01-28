@@ -16,6 +16,7 @@ use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RazorpayPaymentController;
 
 Auth::routes(['verify' => true]);
 
@@ -30,6 +31,9 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact.index
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.show');
 
+Route::get('razorpay-payment', [RazorpayPaymentController::class, 'index'])->name('paynow');
+
+Route::post('razorpay-payment', [RazorpayPaymentController::class, 'store'])->name('razorpay.payment.store');
 // Login by social media [ Facebook - Twitter - Google ]
 Route::get('login/{provider}', [LoginController::class, 'redirectToProvider'])->name('social_login');
 Route::get('login/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('social_login_callback');

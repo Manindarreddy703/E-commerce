@@ -129,10 +129,12 @@
             </form>
             @endif
             @if(\Str::lower($paymentMethodCode) == 'phonepe')
-            <form action="{{ route('payment.initiate') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-primary">Pay Now</button>
-            </form>
+            <!-- <form action="{{ route('paynow') }}" method="POST"> -->
+            @csrf
+            <a href="{{ route('paynow') }}" class="btn btn-primary">Pay Now</a>
+
+            <!-- <button :href="{{route('paynow')}}" type="submit" class="btn btn-primary">Pay Now</button> -->
+            <!-- </form> -->
 
             <!-- Modal to Display QR Code -->
             <div id="qrCodeModal" class="modal" tabindex="-1" role="dialog">
